@@ -1,41 +1,95 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function () {
-  $(".change-devour").on("click", function (event) {
-    var id = $(this).data("id");
-    var newDevour = $(this).data("newdevour");
+document.addEventListener('DOMContentLoaded',(event)=>{
+  if(event){
+      console.log('DOM loaded');
+  }
 
-    var newDevourState = {
-      devoured: newDevour,
-    };
+  const getDevoured = document.querySelectorAll('.has-eaten');
+ 
+  if(getDevoured) {
+     
+      getDevoured.forEach((btn)=>{
+          btn.addEventListener('click',(e)=>{
+           
+              const id = e.target.getAttribute('data-id');
+              const gotDevoured = e.target.getAttribute('data-devoured')
+              
+               let parsenumber = parseInt(gotDevoured) + 1;
+             
+              const devouredState = {
+                  devoured: parsenumber,
+              };
 
-    // Send the PUT request.
-    $.ajax("/api/burgers/" + id, {
-      type: "PUT",
-      data: newDevourState,
-    }).then(function () {
-      console.log("changed devour to", newDevour);
-      // Reload the page to get the updated list
-      location.reload();
-    });
+              console.log(devouredState);
+
+           
+
+              fetch(`/api/burgers/${id}`,{
+                  
+                  method: 'PUT',
+                  headers: {
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+
+                  },
+                 
+                  body: JSON.stringify(devouredState),
+
+                 
+              }).then((response)=>{
+                
+                  if(response.ok) {
+                     
+                      console.log(`changed devoured to ${gotDevoured}`);
+                      
+                      location.reload('/');
+
+                  } else {
+                      alert('something went wrong');
+                  }
+              });
+          })
+      })
+  }
+
+  
+  const getBurgerBtn  = document.getElementById('create-burger');
+
+  burger_names = document.getElementById("bgrs").value.trim(),
+ 
+  dvs = document.getElementById('devoured').checked
+
+
+  if(getBurgerBtn)  {
+     
+      getBurgerBtn.addEventListener('submit',(e)=>{
+
+          e.preventDefault();
+          
+      
+      const newBurger = { 
+         
+      burger_name: document.getElementById("bgrs").value.trim(),
+      devoured: document.getElementById('devoured').checked,
+      };
+     
+      // console.log(newBurger);
+    
+      fetch('/api/burgers',{
+          method:'POST',
+          headers:{
+              Accept: 'application/json',
+              'Content-Type':'application/json',
+          },
+         
+          body: JSON.stringify(newBurger),
+      }).then(()=>{
+          
+          document.getElementById('bgrs').value = '';
+          console.log('Created a new burger');
+         
+          location.reload();
+      });
   });
 
-  $(".create-form").on("submit", function (event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    var newBurger = {
-      name: $("#bur").val().trim(),
-      devoured: $("[name=devoured]:checked").val().trim(),
-    };
-
-    // Send the POST request.
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger,
-    }).then(function () {
-      console.log("created new burger");
-      // Reload the page to get the updated list
-      location.reload();
-    });
-  });
-});
+  }
+})
