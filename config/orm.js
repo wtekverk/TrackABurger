@@ -10,7 +10,7 @@ const orm = {
     });
   },
 
-  insertOne(table, cols, vals, cb) {
+  insert(table, cols, vals, cb) {
     let query = `INSERT INTO ${table}`;
     query += " (";
     query += cols.toString();
@@ -24,7 +24,7 @@ console.log(query);
     });
   },
 
-  updateOne(table, cols, condition, cb) {
+  update(table, cols, condition, cb) {
     let query = `UPDATE ${table}`;
     query += " SET ";
     query += cols;
