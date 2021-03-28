@@ -1,7 +1,7 @@
 li {
   padding: 5px;
   margin: 5px;
-  background: #faebd7;
+  background: #d8d5d2;
 }
 
 .label {
@@ -14,19 +14,20 @@ li {
 }
 
 img {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
   background: transparent;
 }
 
 body {
-  background-color: goldenrod;
+  background-color: rgb(241, 210, 132);
 }
 
 h1 {
   text-align: center;
-  color: red;
+  color: rgb(209, 101, 101);
 }
