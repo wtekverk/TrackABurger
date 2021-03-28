@@ -1,4 +1,3 @@
-// Import the ORM to create functions that will interact with the database.
 const orm = require('../config/orm.js');
 
 const burger = {
@@ -6,7 +5,6 @@ const burger = {
 
     orm.select('burgers', (res) => cb(res));
   },
-  // The variables cols and vals are arrays.
   insert(cols, vals, cb) {
     orm.insert('burgers', cols, vals, (res) => cb(res));
   },
@@ -16,5 +14,4 @@ const burger = {
   
 };
 
-// Export the database functions for the controller (catsController.js).
 module.exports = burger;
