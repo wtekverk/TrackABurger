@@ -1,53 +1,43 @@
-<body>
-  <h1>Track A Burger</h1>
+<h1>Da Burgers</h1>
 
-  <table>
-    <tr>
-      <th>Burger Name</th>
-      <th>Devoured</th>
-    </tr>
-    <tr>
-      <th>
-        <ul>
-          {{#each burgers}}
-          {{#unless devoured}}
-          <li>
-            {{> burgers/burger-block devour=true}}
 
-          </li>
-          {{/unless}}
-          {{/each}}
-        </ul>
-      </th>
-      <th>
-        <ul>
-          {{#each burgers}}
-          {{#if devoured}}
-          {{> burgers/burger-block devour=false}}
-          {{/if}}
-          {{/each}}
-        </ul>
-      </th>
-    </tr>
-  </table>
 
-  <div class="col-4">
-    <form class="create-form">
+<section class="tables">
+  <ul class="not_Devoured">
+    {{#each burgers}}
+    {{#unless devoured}}
+    <li>{{burger_name}}
+      <button class="has-eaten" data-id="{{id}}" data-devoured="0">
+        {{#if devoured}} YOU ATE ME! {{else}} EAT ME!{{/if}}
+      </button>
+    </li>
+    {{/unless}}
+    {{/each}}
+  </ul>
 
-      <div class="form-group">
-        <label for="bur">Burger Name:</label>
-        <br>
-        <input type="text" id="bur" name="burger_name">
-      </div>
 
-      <div class="form-group">
-        <label for="dev">Eat it now?</label><br>
-        <input type="radio" name="devoured" value="1" checked> Dig in!<br>
-        <input type="radio" name="devoured" value="0"> Save it for later...
-        <button type="submit">Add burger</button>
-      </div>
+  <ul class="devoured">
+    {{#each burgers}}
+    {{#if devoured}}
+    <pre>{{burger_name}}</pre>
+    {{/if}}
+    {{/each}}
+  </ul>
+</section>
 
-    </form>
-  </div>
+<form id="create-burger">
+  <article>
+    <label for="bgrs">What kind of burger?</label>
+    <input type="text" id="bgrs" name="burger_name">
+  </article>
 
-</body>
+  <article>
+    <label for="devoured">Devoured?</label>
+    <input type="radio" name="devoured" value="1" id="devoured" checked>Devoured <br>
+    <input type="radio" name="devoured" value="0" id="notDevoured">Not devoured
+  </article>
+
+
+  <button type="submit">New Burger</button>
+
+</form>
