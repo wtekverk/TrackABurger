@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
   }
 
   // UPDATE
-  const changeSleepBtns = document.querySelectorAll('.change-sleep');
+  const changeDevourBtn = document.querySelectorAll('.change-devoured');
 
   // Set up the event listener for the create button
-  if (changeSleepBtns) {
-    changeSleepBtns.forEach((button) => {
+  if (changeDevourBtn) {
+    changeDevourBtn.forEach((button) => {
       button.addEventListener('click', (e) => {
         // Grabs the id of the element that goes by the name, "id"
         const id = e.target.getAttribute('data-id');
