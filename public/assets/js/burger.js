@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
   
   const getBurgerBtn  = document.getElementById('create-burger');
 
-  burger_names = document.getElementById("bgrs").value.trim(),
+  burger_names = document.getElementById("burgers").value.trim(),
  
   dvs = document.getElementById('devoured').checked
 
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
       
       const newBurger = { 
          
-      burger_name: document.getElementById("bgrs").value.trim(),
+      burger_name: document.getElementById("burgers").value.trim(),
       devoured: document.getElementById('devoured').checked,
       };
      
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
           body: JSON.stringify(newBurger),
       }).then(()=>{
           
-          document.getElementById('bgrs').value = '';
+          document.getElementById('burgers').value = '';
           console.log('Created a new burger');
          
           location.reload();

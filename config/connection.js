@@ -13,7 +13,7 @@ if (process.env.JAWSDB_URL) {
     //Make sure you update your own password here! 
     password: "HobGoblin93",
     //db name 
-    database: "burger_db",
+    database: "burgers_db",
   });
 }
 
