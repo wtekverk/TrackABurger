@@ -9,7 +9,7 @@
         {{#each burgers}}
         {{#unless devoured}}
         <li>{{burger_name}}
-          <button class="has-eaten" data-id="{{id}}" data-devoured="0">
+          <button class="btn btn-light has-eaten" data-id="{{id}}" data-devoured="0">
             {{#if devoured}} IT WAS DELISH {{else}} READY TO EAT{{/if}}
           </button>
         </li>
@@ -29,7 +29,7 @@
     </section>
 
   </div>
-  <form id="create-burger col-sm-12">
+  <form id="create-burger" class="col-sm-12">
     <article>
       <label for="bgrs">Enter a burger you want to eat and click "Submit" button.</label>
       <br>
