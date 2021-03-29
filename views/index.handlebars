@@ -10,7 +10,7 @@
         {{#unless devoured}}
         <li>{{burger_name}}
           <button class="has-eaten" data-id="{{id}}" data-devoured="0">
-            {{#if devoured}} YOU ATE ME! {{else}} EAT ME!{{/if}}
+            {{#if devoured}} IT WAS DELISH {{else}} READY TO EAT{{/if}}
           </button>
         </li>
         {{/unless}}
@@ -31,21 +31,23 @@
   </div>
   <form id="create-burger col-sm-12">
     <article>
-      <label for="burgers">Enter a burger you want to eat and click "Submit" button.</label>
+      <label for="bgrs">Enter a burger you want to eat and click "Submit" button.</label>
       <br>
-      <input type="text" id="burgers" name="burger_name">
-    </article>
+      <input type="text" id="bgrs" name="burger_name">
 
-    <article>
+      <br>
       <label for="devoured">Are you going to ear your burger now or later? </label>
       <br>
-      <input type="radio" name="devoured" value="1" id="devoured">Now <br>
-      <input type="radio" name="devoured" value="0" id="notDevoured">Later
+      <input type="radio" name="devoured" value="1" id="devoured"> Now <br>
+      <input type="radio" name="devoured" value="0" id="notDevoured"> Later
+
+      <br>
+
+      <button type="submit" class="btn btn-light border">Submit</button>
 
     </article>
 
 
-    <button type="submit">Submit</button>
 
   </form>
 </div>
