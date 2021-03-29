@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded',(event)=>{
  
   if(getDevoured) {
      
-      getDevoured.forEach((btn)=>{
-          btn.addEventListener('click',(e)=>{
+      getDevoured.forEach((button)=>{
+          button.addEventListener('click',(e)=>{
            
               const id = e.target.getAttribute('data-id');
               const gotDevoured = e.target.getAttribute('data-devoured')
@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded',(event)=>{
                   devoured: parsenumber,
               };
 
-              console.log(devouredState);
 
            
 
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
   
   const getBurgerBtn  = document.getElementById('create-burger');
 
-  burger_names = document.getElementById("bgrs").value.trim(),
+  burger_names = document.getElementById("br").value.trim(),
  
   dvs = document.getElementById('devoured').checked
 
@@ -68,7 +67,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
       
       const newBurger = { 
          
-      burger_name: document.getElementById("bgrs").value.trim(),
+      burger_name: document.getElementById("br").value.trim(),
       devoured: document.getElementById('devoured').checked,
       };
      
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
           body: JSON.stringify(newBurger),
       }).then(()=>{
           
-          document.getElementById('bgrs').value = '';
+          document.getElementById('br').value = '';
           console.log('Created a new burger');
          
           location.reload();
